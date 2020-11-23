@@ -50,7 +50,7 @@ public class GoodPieBakingCompetition {
         int number = Integer.parseInt(Keyboard.readInput());
 
         while (number <= lowerBound) {
-            System.out.println("Please enter an integer number greater than 0:");
+            System.out.println("Please enter an integer number greater than " + lowerBound + " :");
             number = Integer.parseInt(Keyboard.readInput());
         }
 
@@ -61,7 +61,7 @@ public class GoodPieBakingCompetition {
     private void printMinAndMaxFromUser(int min, int max) {
         min = Math.min(min, max);
         max = Math.max(min, max);
-        System.out.println("The minimum radius of a pie is :" + min + "The maximun radius of a pie is :" + max
+        System.out.println("The minimum radius of a pie is :" + min + " " + "The maximun radius of a pie is :" + max
         );
 
     }
@@ -107,7 +107,8 @@ public class GoodPieBakingCompetition {
     private void printContestantAndPieCircumference(String contestant, int size) {
 
         String initial = getContestantInitial(contestant);
-        System.out.println(initial + "baked a " + contestant + "," + " which is" + size);
+        String piecategory = getPieCategory(size);
+        System.out.println(initial + " baked a " + size + "," + " which is " + piecategory);
 
     }
 

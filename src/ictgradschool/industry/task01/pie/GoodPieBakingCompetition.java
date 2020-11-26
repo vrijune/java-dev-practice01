@@ -40,21 +40,21 @@ public class GoodPieBakingCompetition {
 
     // TODO A. Get a name from the user input
     private String getNameFromUser() {
-        String name = Keyboard.readInput();
-        return name;
+        return Keyboard.readInput();
     }
 
     // TODO B. Get an integer from the user. If the integer is less than or equal to the lower bound, ask the user to enter
     // the integer again
-    private int getIntFromUser(int lowerBound) {
-        int number = Integer.parseInt(Keyboard.readInput());
+    private int getIntFromUser(int lowerBound)
+    {
+        int userInput = Integer.parseInt(Keyboard.readInput());
 
-        while (number <= lowerBound) {
+        while (userInput <= lowerBound) {
             System.out.println("Please enter an integer number greater than " + lowerBound + " :");
-            number = Integer.parseInt(Keyboard.readInput());
+            userInput = Integer.parseInt(Keyboard.readInput());
         }
 
-        return number;
+        return userInput;
     }
 
     // TODO C. Print the minimum and maximum radius from the given values
@@ -70,36 +70,34 @@ public class GoodPieBakingCompetition {
     // TODO the radius. Return the value as an integer.
     // TODO circumference = 2 * PI * radius
     private int getRandomPieSize(int min, int max) {
-        int randomNumber = (int) (Math.random() * (max - min));
-        double circumference = 2 * Math.PI * randomNumber;
+        int radius = (int) (Math.random() * (max - min));
+        double circumference = 2 * Math.PI * radius;
         int value = (int) (circumference);
 
         return value;
+        //return(int)((2*Math.PI*radius));
     }
 
     // TODO E. Get the pie category based on the given value
     // If the size > 500, return "extra large"; If the size > 100, return "large";
     // If the size > 40, return "medium"; If the size > 10, return "small"; else return "extra small";
     private String getPieCategory(int size) {
-        if (size > 500) {
+        if (size > 500)
             return "extra large";
-        } else if (size > 100 && size <= 500) {
+         else if (size > 100)
             return "large";
-        } else if (size > 40 && size <= 100) {
+         else if (size > 40)
             return "medium";
-        } else if (size > 10 && size <= 40) {
+         else if (size > 10)
             return "small";
-        } else return "extra small";
+         else
+            return "extra small";
     }
 
     // TODO F. Get the initial from the given contestant name
     private String getContestantInitial(String contestant) {
 
-
-        char initial = contestant.charAt(0);
-
-        return Character.toString(initial);
-
+        return contestant.substring(0,1);
     }
 
     // TODO G. Print the following message on console (don't forget to use the methods created previously)
@@ -108,7 +106,7 @@ public class GoodPieBakingCompetition {
 
         String initial = getContestantInitial(contestant);
         String piecategory = getPieCategory(size);
-        System.out.println(initial + " baked a " + size + "," + " which is " + piecategory);
+        System.out.println(initial + " baked a " + size + "," + "pie, which is " + piecategory);
 
     }
 
@@ -117,13 +115,11 @@ public class GoodPieBakingCompetition {
         int largestpie = Math.max(Math.max(pieSize1, pieSize2), pieSize3);
         int secondpie = Math.min(Math.max(pieSize1, pieSize2), pieSize3);
         int thirdpie = Math.min(Math.min(pieSize1, pieSize2), pieSize3);
-
-        pieSize1 = largestpie;
-        pieSize2 = secondpie;
-        pieSize3 = thirdpie;
+    //int secondpie = (pieSize1+pieSize2+pieSize3)-(largestpie+thirdpie)
 
 
-        System.out.println("The pie sizes are: " + pieSize1 + ", " + pieSize2 + ", " + pieSize3);
+
+        System.out.println("The pie sizes are: " + largestpie + ", " + secondpie + ", " + thirdpie);
     }
 
     // TODO I. Generate a random number between 1 - 100 and return the remainder of the random number after dividing by 3
@@ -132,6 +128,9 @@ public class GoodPieBakingCompetition {
         int reminder = (int) randomNumber % 3;
 
         return reminder;
+
+        //int random = (int)(1+Math.random()*(100-1+1));
+        //return random % 3;
     }
 
     // TODO J. Get the winner's name using the method created in I.
@@ -140,17 +139,17 @@ public class GoodPieBakingCompetition {
     // If the winner number is 2, the winner is contestant3;
     private String getWinner(String contestant1, String contestant2, String contestant3) {
 
-        int reminder = getWinnerNumber();
-        if (reminder == 0) {
+        int winnerNumber = getWinnerNumber();
+        if (winnerNumber == 0)
             return "the winner is " + contestant1;
-        } else if (reminder == 1) {
+         else if (winnerNumber == 1)
             return "the winner is " + contestant2;
-        } else if (reminder == 2) {
+         else if (winnerNumber == 2)
             return "the winner is " + contestant3;
-        }
-        else {
-            return "Error";
-        }
+
+        else
+            return "No winner";
+
     }
 }
 
